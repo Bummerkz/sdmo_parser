@@ -1,14 +1,13 @@
-#-*- coding:utf-8 -*-
+# -*- coding:utf-8 -*-
 from pymodbus.constants import Endian
 from pymodbus.payload import BinaryPayloadDecoder
 from pymodbus.payload import BinaryPayloadBuilder
 
-# import json
-import logging
 import time
 import config
 import threading
-# import requests
+import requests
+import journal
 from datetime import datetime
 import logging
 from URMessageChannel import TimerEvtHandle, init_base
@@ -25,6 +24,7 @@ log.setLevel(logging.INFO)
 
 read_lock = threading.Lock()
 
+
 class InitTimer(TimerEvtHandle):
     def __init__(self, interval, device):
         self.device = device
@@ -35,19 +35,19 @@ class InitTimer(TimerEvtHandle):
         self.bytesize = cfg["Devices"][device]["bytesize"]
         self.parity = cfg["Devices"][device]["parity"]
         self.stopbits = cfg["Devices"][device]["stopbits"]
-        
+
         self.modbus_client = ModbusClient(method='RTU',
-            port=self.port,
-            timeout=5,
-            baudrate=self.baudrate,
-            parity=self.parity,
-            stopbits=self.stopbits,
-            bytesize=self.bytesize)
+                                          port=self.port,
+                                          timeout=5,
+                                          baudrate=self.baudrate,
+                                          parity=self.parity,
+                                          stopbits=self.stopbits,
+                                          bytesize=self.bytesize)
 
         self.modbus_connected = False
-        
+
         TimerEvtHandle.__init__(self, self.base, interval)
-    
+
     def modbus_connect(self):
         retry_times = 0
         while not self.modbus_connected and retry_times < 5:
@@ -66,27 +66,36 @@ class InitTimer(TimerEvtHandle):
     def send_fc_data(self):
         UNIT = int(cfg["Devices"][self.device]["addr"])
         now = datetime.now()
-        now = unicode(now.replace(microsecond = 0))
+        now = unicode(now.replace(microsecond=0))
         n = self.device
         regs = cfg["Devices"][self.device]["regs"]
         # log.info(self.get_modbus_fc(UNIT, regs))
         v = ','.join(self.get_modbus_fc(UNIT, regs))
         r = ','.join(str(cfg["Devices"][self.device]["regs"]))
         server = cfg["Server"]["ip"]
+        port = cfg["Server"]["port"]
         # call modbus func and get values of regs
         # v = '804.,0A.834M%20804.%2010D.834,669,3488,466,1573,932,55,525,32,34,16,6,190,212,1,1,90,2,30,0,50,-120,5,5,20,352,2,2,352,1,1,0,10,10,44,2,0,5,30,30,1,80,0,100,100,0,0,0,0,0,2178,0,0,269,24,90,1,212'
         payload = {'d': now, 'id': 'ID', 'n': n, 'r': r, 'v': v}
-        url = "http://" + str(server) + "/data/setReg.php"
+        url = 'http://{server}:{port}/data/setReg.php'.format(server=server, port=port)
 
         # log.info(payload)
 
-        # try:
-        #     logging.info("--- Send FC data ---")
-        #     r = requests.get(url, params=payload)
-        #     logging.info("status code: " + str(r.status_code))
-        # except requests.exceptions.RequestException as e:  # This is the correct syntax
-        #     logging.error(e)
- 
+        try:
+            logging.info("--- Send FC data ---")
+            r = requests.get(url, params=payload)
+            logging.info("status code: " + str(r.status_code))
+            if r.status_code != 200:
+                journal.saveData(payload, n, cfg['Server']['SD_card_storage_interval'])
+            else:
+                records = journal.upload(n)
+                for payload in records:
+                    logging.info("--- Send stored data ---")
+                    r = requests.get(url, params=payload[1])
+                    logging.info("status code: " + str(r.status_code))
+        except requests.exceptions.RequestException as e:  # This is the correct syntax
+            logging.error(e)
+
     def get_modbus_fc(self, unit, regs):
         self.modbus_connect()
 
@@ -135,7 +144,7 @@ class InitTimer(TimerEvtHandle):
 
         logging.info("read from holding registers success!!!")
         logging.info("Result array: {}".format(result))
-        
+
         self.modbus_client.close()
 
         return result
@@ -148,5 +157,3 @@ class InitTimer(TimerEvtHandle):
             return decoder
         else:
             return 'error'
-        
-
