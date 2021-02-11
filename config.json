@@ -83,6 +83,7 @@
             "addr": 1, 
             "id": 1,
             "bytesize": 8, 
+            "Timeout": 1,
             "osc_registers": {
                 "1617": "i4", 
                 "1614": "i4", 

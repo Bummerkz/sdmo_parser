@@ -2,7 +2,10 @@
 import logging
 import devices
 import config
-# from modbus import ModbusDevice
+import fc
+import merc
+from comm import Modbus
+from datetime import datetime
 from find_devices import FindDevices
 from advancedhttpserver import *
 from advancedhttpserver import __version__
@@ -357,17 +360,25 @@ class Handler(RequestHandler):
         return
 
     def get_reg(self, query): # надо реализовать
+        cfg = config.get_config()
+        now = datetime.now()
+        now = unicode(now.replace(microsecond=0))
         n_value = query.get('n', [''])[0]
-        # mb = ModbusDevice(n_value)
-        # mb.modbus_connect()
-        # message = "\n".join(mb.get_modbus_fc(True))
-        # mb.modbus_client.close()
-        # logging.info(message)
-        # self.send_response(200)
-        # self.send_header('Content-Type', 'text/plain')
-        # self.send_header('Content-Length', len(message))
-        # self.end_headers()
-        # self.wfile.write(message)
+        modbus_client = Modbus(cfg, n_value)
+
+        values = modbus_client.get_modbus_fc()
+        regs = cfg["Devices"][n_value]["regs"]
+
+        message = ''
+
+        for reg, value in zip(regs, values):
+            message += str(now) + ' - ' + str(reg) + ' : ' + str(value) + '<br>'
+
+        self.send_response(200)
+        self.send_header('Content-Type', 'text/html')
+        self.send_header('Content-Length', len(message))
+        self.end_headers()
+        self.wfile.write(message)
         return
 
     def set_reg(self, query): # надо реализовать
