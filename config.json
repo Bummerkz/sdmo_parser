@@ -43,7 +43,7 @@
         "server_timeout": 10, 
         "cmd_interval": 300, 
         "status": 1,
-        "ip": "192.168.1.70", 
+        "ip": "192.168.1.101", 
         "id": "ID", 
         "reboot": 0, 
         "modbus_only": 0,

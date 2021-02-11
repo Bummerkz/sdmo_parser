@@ -38,7 +38,7 @@ class InitTimer(TimerEvtHandle):
 
         self.modbus_client = ModbusClient(method='RTU',
                                           port=self.port,
-                                          timeout=5,
+                                          timeout=1,
                                           baudrate=self.baudrate,
                                           parity=self.parity,
                                           stopbits=self.stopbits,
@@ -71,7 +71,9 @@ class InitTimer(TimerEvtHandle):
         regs = cfg["Devices"][self.device]["regs"]
         # log.info(self.get_modbus_fc(UNIT, regs))
         v = ','.join(self.get_modbus_fc(UNIT, regs))
-        r = ','.join(str(cfg["Devices"][self.device]["regs"]))
+        r = ','.join(cfg["Devices"][self.device]["regs"])
+        logging.info(r)
+        logging.info(type(r))
         server = cfg["Server"]["ip"]
         port = cfg["Server"]["port"]
         # call modbus func and get values of regs
@@ -79,7 +81,7 @@ class InitTimer(TimerEvtHandle):
         payload = {'d': now, 'id': 'ID', 'n': n, 'r': r, 'v': v}
         url = 'http://{server}:{port}/data/setReg.php'.format(server=server, port=port)
 
-        # log.info(payload)
+        log.info(payload)
 
         try:
             logging.info("--- Send FC data ---")
@@ -88,11 +90,14 @@ class InitTimer(TimerEvtHandle):
             if r.status_code != 200:
                 journal.saveData(payload, n, cfg['Server']['SD_card_storage_interval'])
             else:
-                records = journal.upload(n)
-                for payload in records:
-                    logging.info("--- Send stored data ---")
-                    r = requests.get(url, params=payload[1])
-                    logging.info("status code: " + str(r.status_code))
+                try:
+                    records = journal.upload(n)
+                    for payload in records:
+                        logging.info("--- Send stored data ---")
+                        r = requests.get(url, params=payload[1])
+                        logging.info("status code: " + str(r.status_code))
+                except Exception as e:
+                    logging.info("Error: {except}".format(e))
         except requests.exceptions.RequestException as e:  # This is the correct syntax
             logging.error(e)
 
