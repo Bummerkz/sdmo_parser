@@ -1,7 +1,4 @@
 # -*- coding:utf-8 -*-
-# from pymodbus.constants import Endian
-# from pymodbus.payload import BinaryPayloadDecoder
-# from pymodbus.payload import BinaryPayloadBuilder
 from comm import Modbus
 
 import time
@@ -12,8 +9,6 @@ import journal
 from datetime import datetime
 import logging
 from URMessageChannel import TimerEvtHandle, init_base
-# from pymodbus.client.sync import ModbusSerialClient as ModbusClient
-# from pymodbus.exceptions import ModbusIOException
 
 FORMAT = ('%(asctime)-15s %(threadName)-15s'
           ' %(levelname)-8s %(module)-15s:%(lineno)-8s %(message)s')

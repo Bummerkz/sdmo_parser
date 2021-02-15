@@ -58,36 +58,41 @@ class Modbus():
                 logging.info('Addr: {}'.format(k))
                 if v == 'i2':
                     count = 1
+                    logging.info('type: {}'.format(v))
                     decoded = self.read_fc_register(addr, count, unit)
-                    if decoded != 'error':
+                    if decoded != 0:
                         decoded = decoded.decode_16bit_int()
                         logging.info('Decoded result: {}'.format(decoded))
                     result.append(str(decoded))
                 if v == 'i4':
+                    logging.info('type: {}'.format(v))
                     count = 2
                     decoded = self.read_fc_register(addr, count, unit)
-                    if decoded != 'error':
+                    if decoded != 0:
                         decoded = decoded.decode_16bit_int()
                         logging.info('Decoded result: {}'.format(decoded))
                     result.append(str(decoded))
                 if v == 'str':
+                    logging.info('type: {}'.format(v))
                     count = 5
                     decoded = self.read_fc_register(addr, count, unit)
-                    if decoded != 'error':
+                    if decoded != 0:
                         decoded = decoded.decode_string(count)
                         logging.info('Decoded result: {}'.format(decoded))
                     result.append(str(decoded))
                 if v == 'u1':
+                    logging.info('type: {}'.format(v))
                     count = 1
                     decoded = self.read_fc_register(addr, count, unit)
-                    if decoded != 'error':
+                    if decoded != 0:
                         decoded = decoded.decode_16bit_uint()
                         logging.info('Decoded result: {}'.format(decoded))
                     result.append(str(decoded))
                 if v == 'u2':
+                    logging.info('type: {}'.format(v))
                     count = 2
                     decoded = self.read_fc_register(addr, count, unit)
-                    if decoded != 'error':
+                    if decoded != 0:
                         decoded = decoded.decode_32bit_uint()
                         logging.info('Decoded result: {}'.format(decoded))
                     result.append(str(decoded))
@@ -102,8 +107,8 @@ class Modbus():
     def read_fc_register(self, addr, count, UNIT):
         rr = self.modbus_client.read_holding_registers(addr, count, unit=UNIT)
         if not rr.isError():
-            logging.info('Encoded result: {}'.format(rr.registers))
+            # logging.info('Encoded result: {}'.format(rr.registers))
             decoder = BinaryPayloadDecoder.fromRegisters(rr.registers, Endian.Big, Endian.Big)
             return decoder
         else:
-            return 'error'
+            return 0

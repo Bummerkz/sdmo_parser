@@ -102,43 +102,6 @@ class Handler(RequestHandler):
             self.send_header('Content-Length', len(message))
             self.end_headers()
             self.wfile.write(message)
-
-        # switch ($_REQUEST['type']) {
-        # case 'update_id':
-        #     if($value == NULL)
-        #         $value = '';
-        #     $url = "http://".$ip."/setSetup.php?r=1&v=".$value;
-        #     break;
-        # case 'update_ip':
-        #     $url = "http://".$ip."/setSetup.php?r=2&v=".$value;
-        #     break;
-        # case 'update_port':
-        #     $url = "http://".$ip."/setSetup.php?r=3&v=".$value;
-        #     break;
-        # case 'update_mode':
-        #     $url = "http://".$ip."/setSetup.php?r=4&v=".$value;
-        #     break;
-        # case 'update_server_timeout':
-        #     $url = "http://".$ip."/setSetup.php?r=5&v=".$value;
-        #     break;
-        # case 'update_cmd_interval':
-        #     $url = "http://".$ip."/setSetup.php?r=6&v=".$value;
-        #     break;
-        # case 'update_status':
-        #     $url = "http://".$ip."/setSetup.php?r=6&v=".$value;
-        #     break;
-        # case 'update_sd_interval':
-        #     $url = "http://".$ip."/setSetup.php?r=7&v=".$value;
-        #     break;
-        # case 'update_debug_lvl':
-        #     $url = "http://".$ip."/setSetup.php?r=8&v=".$value;
-        #     break;
-        # case 'update_reboot':
-        #     $url = "http://".$ip."/setSetup.php?r=9&v=".$value;
-        #     break;
-        # case 'update_Modbus_only':
-        #     $url = "http://".$ip."/setSetup.php?r=10&v=".$value;
-        #     break;
         return
 
     def get_setup(self, query):
@@ -255,17 +218,17 @@ class Handler(RequestHandler):
 
         for i, reg in enumerate(regs):
             if units[i] == '1': # i1 не подтверждено
-                new_regs.update({reg: 'i1'})   
-            elif units[i] == '2': # i2
-                new_regs.update({reg: 'i2'})   
-            elif units[i] == '3': # i4
-                new_regs.update({reg: 'i4'})   
-            elif units[i] == '4': # u1
                 new_regs.update({reg: 'u1'})   
+            elif units[i] == '2': # i2
+                new_regs.update({reg: 'u2'})   
+            elif units[i] == '3': # i4
+                new_regs.update({reg: 'u4'})   
+            elif units[i] == '4': # u1
+                new_regs.update({reg: 'i1'})   
             elif units[i] == '5': # u2
                 new_regs.update({reg: 'u2'})   
-            elif units[i] == '6': # f не подтверждено
-                new_regs.update({reg: 'f'})   
+            # elif units[i] == '6': # f не подтверждено
+            #     new_regs.update({reg: 'f'})   
             elif units[i] == '7': # str
                 new_regs.update({reg: 'str'})   
 
