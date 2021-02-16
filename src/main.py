@@ -8,6 +8,7 @@ import config
 import fc
 import serial_device
 import os
+import time
 
 modbus_lock = threading.Lock()
 APP_PATH = "/usr/pyuser/app/"
@@ -35,6 +36,7 @@ class startWork(TimerEvtHandle):
                 t.daemon = True
                 t.start()
                 logging.info('{0} device created!'.format(self.cfg['Devices'][device]['type']))
+                time.sleep(10)
                 # elif self.cfg["Devices"][device]['name'].lower() == 'mercury':
                     # interval = int(self.cfg['Devices'][device]['send_interval'])
                     # app = merc.InitTimer(interval, device)

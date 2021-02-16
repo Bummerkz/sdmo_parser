@@ -130,16 +130,22 @@ class RS485():
         
         self.regs = cfg["Devices"][self.device]["regs"]
         
+        self.addr = 0
+
         self.cfg = cfg
         
-        self.readTimeout = .100
+        self.readTimeout = .1
+
+#     parity=serial.PARITY_NONE,
+#     stopbits=serial.STOPBITS_ONE,
+#     bytesize=serial.EIGHTBITS
 
         self.serial_client = serial.Serial(port=cfg["Port"],
                                           timeout=cfg["Devices"][device]["Timeout"],
                                           baudrate=cfg["Devices"][device]["baudrate"],
-                                          parity=cfg["Devices"][device]["parity"],
-                                          stopbits=cfg["Devices"][device]["stopbits"],
-                                          bytesize=cfg["Devices"][device]["bytesize"])
+                                          parity=serial.PARITY_NONE,
+                                          stopbits=serial.STOPBITS_ONE,
+                                          bytesize=serial.EIGHTBITS)
 
         self.access = False
 
@@ -157,7 +163,9 @@ class RS485():
         time.sleep(self.readTimeout)
 
         response = self.serial_client.read(lenght)
-
+        logging.info('send Response:')
+        logging.info(' '.join('{:02x}'.format(x) for x in bytearray(response)))
+        
         try:
             crc = []
             crc.append(response[lenght-2])
@@ -168,50 +176,110 @@ class RS485():
             data = response[:lenght - 2]
             # print(hex(pymodbus.utilities.computeCRC(data)))
             if checkCRC(data, crc_val):
-                return response
+                return bytearray(response)
             else:
                 return False
         except:
             return False
 
-    def get_access(self, addr):
-        cmd = [addr, int2byte(1), int2byte(1), int2byte(1), int2byte(1), int2byte(1), int2byte(1), int2byte(1), int2byte(1)]
+    def get_access(self, addr=0):
+        cmd = [int2byte(addr), int2byte(1), int2byte(1), int2byte(1), int2byte(1), int2byte(1), int2byte(1), int2byte(1), int2byte(1)]
         # print(cmd)
         crc = computeCRC(cmd)
         cmd = cmd + self.long_to_bytes(crc)
         cmd = bytearray(cmd)
 
-        # print('Command: ' + cmd)
+        logging.info("Getting access to Mercury")
+        logging.info(' '.join('{:02x}'.format(x) for x in bytearray(cmd)))
+
         response = self.send_command(cmd)
         if response:
+            logging.info("Response:")
+            logging.info(' '.join('{:02x}'.format(x) for x in bytearray(response)))
             return True
         
         return False
-        # print ('Response: ' + bytearray(response))
 
     def connected(self):
         retry_times = 0
         while not self.access and retry_times < 5:
-            if not self.get_access():
+            # self.addr = self.findMerc()
+            if not self.get_access(0):
                 time.sleep(0.5)
                 retry_times += 1
                 continue
             self.access = True
-            logging.info('Mercury access grant')
+            logging.info('Mercury access granted')
 
-    def findMerc(self):
-        for id in range(200, 205):
-            cmd = []
-            cmd.append(int2byte(id))
-            cmd.append(int2byte(0))
-            crc = computeCRC(cmd)
-            cmd = cmd + self.long_to_bytes(crc)
-            cmd = bytearray(cmd)
-            print(cmd)
-            if self.send_command(cmd, 4) == cmd:
-                print('Found')
-                return id
+    # def findMerc(self):
+    #     for id in range(200, 205):
+    #         cmd = []
+    #         cmd.append(int2byte(id))
+    #         cmd.append(int2byte(0))
+    #         crc = computeCRC(cmd)
+    #         cmd = cmd + self.long_to_bytes(crc)
+    #         cmd = bytearray(cmd)
+
+    #         logging.info("Searchin for Mercury address")
+    #         logging.info("id: {}".format(id))
+    #         if self.send_command(cmd, 4) == cmd:
+    #             logging.info("Found Mercury")
+    #             logging.info("Address: {}".format(id))
+    #             return id
+
+    def get_freq(self):
+        lenght = 6
+        koef = 100
+        cmd = [int2byte(0), int2byte(8), int2byte(17), int2byte(64)]
+        crc = computeCRC(cmd)
+        cmd = cmd + self.long_to_bytes(crc)
+        cmd = bytearray(cmd)
+        logging.info("get_Freq cmd:")
+        logging.info(' '.join('{:02x}'.format(x) for x in bytearray(cmd)))
+
+        if self.access:
+            response = self.send_command(cmd, lenght)
+            logging.info("get_Freq Response: {}".format(response))
+            if response:
+                value = response[2]
+                value += response[3] << 8
+                value += response[1] << 16
+                logging.info("get_Freq value: {}".format(value))
+                return value / koef
+        return False
+            
+    def get_current(self):
+        cmd = [0x00, 0x08, 0x16, 0x21]
+
+    def get_voltage(self):
+        cmd = [0x00, 0x08, 0x16, 0x11]
+
+    def get_power(self):
+        cmd = [0x00, 0x08, 0x16, 0x00]
+
+    def get_angle(self):
+        cmd = [0x00, 0x08, 0x16, 0x51]
+
+    def get_activePower(self):
+        cmd = [0x00, 0x05, 0x00, 0x00]
+
+    def get_sumPower(self):
+        cmd = [0x00, 0x08, 0x11, 0x00]
 
     def get_data(self):
-        addr = self.findMerc()
-        self.get_access(addr)
+        self.connected()
+        freq = self.get_freq()
+        # /data/setElectric.php?d=2020-11-05%2016:58:35&id=&n=2&r=1,2,3,4,5,6,7,8,9,10,11&v=
+        # 1 - 61061.85,
+        # 2 - 61109.58,
+        # 3 - 24.00,
+        # 4 - 2.05,
+        # 5 - 5.95,
+        # 6 - 5.32,
+        # 7 - 225.11,
+        # 8 - 228.99,
+        # 9 - 226.07,
+        # 10- 49.98,
+        # 11- 4592.30
+        return ['0','0','0','0','0','0','0','0','0',freq,'0']
+

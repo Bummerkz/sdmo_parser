@@ -161,11 +161,12 @@
         }, 
         "2": {
             "osc_duration": 60, 
-            "parity": "E", 
-            "baudrate": 19200, 
+            "parity": "N", 
+            "baudrate": 9600, 
             "addr": 1, 
             "id": 1,
             "bytesize": 8, 
+            "Timeout": 1,
             "osc_registers": {
             }, 
             "regs": {

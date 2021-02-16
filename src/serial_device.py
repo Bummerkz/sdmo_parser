@@ -89,6 +89,6 @@ class InitTimer(TimerEvtHandle):
                         r = requests.get(url, params=payload[1])
                         logging.info("status code: " + str(r.status_code))
                 except Exception as e:
-                    logging.info("Error: {except}".format(e))
+                    logging.info("Error: {e}".format(e))
         except requests.exceptions.RequestException as e:  # This is the correct syntax
             logging.error(e)
