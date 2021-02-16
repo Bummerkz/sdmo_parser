@@ -1,3 +1,21 @@
+class AbstractString:
+    LENGTH = 0
+
+    def __init__(self, reg_id=None, reg_addr=None, raw = None, value=None):
+        self._id = None
+        self._addr = None
+        self._raw = None
+        self._value = None
+
+        if reg_id is not None:
+            self.id = reg_id
+        elif reg_addr is not None:
+            self.addr = reg_addr
+
+        if raw is not None:
+            self.raw = bytes(raw)
+        elif value is not None:
+            self.value = value
 class AbstractReg:
     LENGTH = 0
 
@@ -108,7 +126,6 @@ class GenericUintReg(AbstractReg):
 class GenericUint8Reg(GenericUintReg):
     LENGTH = 1
 
-
 class GenericInt8Reg(GenericUint8Reg):
     def _calc_value_by_raw(self):
         super()._calc_value_by_raw()
@@ -132,7 +149,6 @@ class GenericInt8Reg(GenericUint8Reg):
 
 class GenericUint16Reg(GenericUintReg):
     LENGTH = 2
-
 
 class GenericInt16Reg(GenericUint16Reg):
     def _calc_value_by_raw(self):
@@ -162,7 +178,6 @@ class GenericInt16Reg(GenericUint16Reg):
 
 class GenericUint32Reg(GenericUintReg):
     LENGTH = 4
-
 
 class GenericInt32Reg(GenericUint32Reg):
     def _calc_value_by_raw(self):
@@ -250,6 +265,12 @@ class DanfossUint16Reg(GenericUint16Reg):
     def _set_id_by_addr(self):
         self._id = int((self._addr + 1) / 10)
 
+class DanfossUint8Reg(GenericUint8Reg):
+    def _set_addr_by_id(self):
+        self._addr = (self._id * 10) - 1
+
+    def _set_id_by_addr(self):
+        self._id = int((self._addr + 1) / 10)
 
 class DanfossInt16Reg(GenericInt16Reg):
     def _set_addr_by_id(self):

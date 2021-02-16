@@ -41,7 +41,8 @@ class InitTimer(TimerEvtHandle):
         now = datetime.now()
         now = unicode(now.replace(microsecond=0))
         v = ','.join(self.client.get_modbus_fc())
-        r = ','.join(self.cfg["Devices"][self.device]["regs"])
+        regs = sorted(self.cfg["Devices"][self.device]["regs"], key=int)
+        r = ','.join(regs)
         server = self.cfg["Server"]["ip"]
         port = self.cfg["Server"]["port"]
         payload = {'d': now, 'id': 'ID', 'n': self.device, 'r': r, 'v': v}
@@ -56,12 +57,13 @@ class InitTimer(TimerEvtHandle):
             else:
                 try:
                     records = journal.upload(self.device)
-                    for payload in records:
-                        logging.info("--- Send stored data ---")
-                        r = requests.get(url, params=payload[1])
-                        logging.info("status code: " + str(r.status_code))
+                    if records:
+                        for payload in records:
+                            logging.info("--- Send stored data ---")
+                            r = requests.get(url, params=payload[1])
+                            logging.info("status code: " + str(r.status_code))
                 except Exception as e:
-                    logging.info("Error: {except}".format(e))
+                    logging.error(e)
         except requests.exceptions.RequestException as e:  # This is the correct syntax
             logging.error(e)
 
@@ -69,12 +71,13 @@ class InitTimer(TimerEvtHandle):
         now = datetime.now()
         now = unicode(now.replace(microsecond=0))
         v = ','.join(self.client.get_data())
-        r = ','.join(self.cfg["Devices"][self.device]["regs"])
+        regs = sorted(self.cfg["Devices"][self.device]["regs"], key=int)
+        r = ','.join(regs)
         server = self.cfg["Server"]["ip"]
         port = self.cfg["Server"]["port"]
         payload = {'d': now, 'id': 'ID', 'n': self.device, 'r': r, 'v': v}
         url = 'http://{server}:{port}/data/setElectric.php'.format(server=server, port=port)
-
+        logging.info('payload url: {}'.format(payload))
         try:
             logging.info("--- Send FC data ---")
             r = requests.get(url, params=payload)
@@ -84,11 +87,12 @@ class InitTimer(TimerEvtHandle):
             else:
                 try:
                     records = journal.upload(self.device)
-                    for payload in records:
-                        logging.info("--- Send stored data ---")
-                        r = requests.get(url, params=payload[1])
-                        logging.info("status code: " + str(r.status_code))
+                    if records:
+                        for payload in records:
+                            logging.info("--- Send stored data ---")
+                            r = requests.get(url, params=payload[1])
+                            logging.info("status code: " + str(r.status_code))
                 except Exception as e:
-                    logging.info("Error: {e}".format(e))
+                    logging.error(e)
         except requests.exceptions.RequestException as e:  # This is the correct syntax
             logging.error(e)

@@ -330,7 +330,7 @@ class Handler(RequestHandler):
         modbus_client = Modbus(cfg, n_value)
 
         values = modbus_client.get_modbus_fc()
-        regs = cfg["Devices"][n_value]["regs"]
+        regs = sorted(cfg["Devices"][n_value]["regs"], key=int)
 
         message = ''
 

@@ -59,7 +59,9 @@ class Modbus():
         result = []
         logging.info("--- read input registers: ---")
         count = 1
-        for i, (k, v) in enumerate(regs.items()):
+        # for i, (k, v) in enumerate(regs.items()):
+        for k in sorted(regs.keys()):
+            v = regs[k]
             with read_lock:
                 addr = int(k) * 10 - 1
                 logging.info('Addr: {}'.format(k))
@@ -123,23 +125,12 @@ class Modbus():
 
 class RS485():
     def __init__(self, cfg, device):
-        
         self.unit = int(cfg["Devices"][device]['addr'])
-
         self.device = device
-        
         self.regs = cfg["Devices"][self.device]["regs"]
-        
         self.addr = 0
-
         self.cfg = cfg
-        
         self.readTimeout = .1
-
-#     parity=serial.PARITY_NONE,
-#     stopbits=serial.STOPBITS_ONE,
-#     bytesize=serial.EIGHTBITS
-
         self.serial_client = serial.Serial(port=cfg["Port"],
                                           timeout=cfg["Devices"][device]["Timeout"],
                                           baudrate=cfg["Devices"][device]["baudrate"],
@@ -148,7 +139,6 @@ class RS485():
                                           bytesize=serial.EIGHTBITS)
 
         self.access = False
-
 
     def long_to_bytes(self, i):
         byte_array = []
@@ -163,8 +153,8 @@ class RS485():
         time.sleep(self.readTimeout)
 
         response = self.serial_client.read(lenght)
-        logging.info('send Response:')
-        logging.info(' '.join('{:02x}'.format(x) for x in bytearray(response)))
+        # logging.info('send Response:')
+        # logging.info(' '.join('{:02x}'.format(x) for x in bytearray(response)))
         
         try:
             crc = []
@@ -189,13 +179,13 @@ class RS485():
         cmd = cmd + self.long_to_bytes(crc)
         cmd = bytearray(cmd)
 
-        logging.info("Getting access to Mercury")
-        logging.info(' '.join('{:02x}'.format(x) for x in bytearray(cmd)))
+        # logging.info("Getting access to Mercury")
+        # logging.info(' '.join('{:02x}'.format(x) for x in bytearray(cmd)))
 
         response = self.send_command(cmd)
         if response:
-            logging.info("Response:")
-            logging.info(' '.join('{:02x}'.format(x) for x in bytearray(response)))
+            # logging.info("Response:")
+            # logging.info(' '.join('{:02x}'.format(x) for x in bytearray(response)))
             return True
         
         return False
@@ -209,7 +199,7 @@ class RS485():
                 retry_times += 1
                 continue
             self.access = True
-            logging.info('Mercury access granted')
+            # logging.info('Mercury access granted')
 
     # def findMerc(self):
     #     for id in range(200, 205):
@@ -234,41 +224,186 @@ class RS485():
         crc = computeCRC(cmd)
         cmd = cmd + self.long_to_bytes(crc)
         cmd = bytearray(cmd)
-        logging.info("get_Freq cmd:")
-        logging.info(' '.join('{:02x}'.format(x) for x in bytearray(cmd)))
+        # logging.info("get_Freq cmd:")
+        # logging.info(' '.join('{:02x}'.format(x) for x in bytearray(cmd)))
 
         if self.access:
             response = self.send_command(cmd, lenght)
-            logging.info("get_Freq Response: {}".format(response))
+            # logging.info("get_Freq Response: {}".format(response))
             if response:
                 value = response[2]
                 value += response[3] << 8
                 value += response[1] << 16
-                logging.info("get_Freq value: {}".format(value))
+                value = float(value)
+                # logging.info("get_Freq value: {}".format(value))
                 return value / koef
         return False
-            
-    def get_current(self):
-        cmd = [0x00, 0x08, 0x16, 0x21]
 
-    def get_voltage(self):
-        cmd = [0x00, 0x08, 0x16, 0x11]
+    def get_current(self, phase):
+        lenght = 6
+        koef = 1000
+        cmd = [int2byte(0), int2byte(8), int2byte(17), int2byte(phase + 32)]
+        crc = computeCRC(cmd)
+        cmd = cmd + self.long_to_bytes(crc)
+        cmd = bytearray(cmd)
+        # logging.info("A cmd:")
+        # logging.info(' '.join('{:02x}'.format(x) for x in bytearray(cmd)))
 
-    def get_power(self):
-        cmd = [0x00, 0x08, 0x16, 0x00]
+        if self.access:
+            response = self.send_command(cmd, lenght)
+            # logging.info("A{} Response: {}".format(phase, response))
+            if response:
+                value = 0.000
+                value = response[2]
+                value += response[3] << 8
+                value += response[1] << 16
+                value = float(value)
+                # logging.info("A value: {}".format(value / koef))
+                return value / koef
+        return False
 
-    def get_angle(self):
-        cmd = [0x00, 0x08, 0x16, 0x51]
+    def get_voltage(self, phase):
+        lenght = 6
+        koef = 100
+        cmd = [int2byte(0), int2byte(8), int2byte(17), int2byte(phase + 16)]
+        crc = computeCRC(cmd)
+        cmd = cmd + self.long_to_bytes(crc)
+        cmd = bytearray(cmd)
+        # logging.info("V cmd:")
+        # logging.info(' '.join('{:02x}'.format(x) for x in bytearray(cmd)))
+
+        if self.access:
+            response = self.send_command(cmd, lenght)
+            # logging.info("V{} Response: {}".format(phase, response))
+            if response:
+                value = 0.00
+                value = response[2]
+                value += response[3] << 8
+                value += response[1] << 16
+                value = float(value)
+                # logging.info("V value: {}".format(value / koef))
+                return value / koef
+        return False
+
+    # def get_power(self):
+    #     # cmd = [0x00, 0x08, 0x16, 0x00]
+    #     lenght = 6
+    #     koef = 100 * 1000
+    #     cmd = [int2byte(0), int2byte(8), int2byte(22), int2byte(0)]
+    #     crc = computeCRC(cmd)
+    #     cmd = cmd + self.long_to_bytes(crc)
+    #     cmd = bytearray(cmd)
+    #     logging.info("Power cmd:")
+    #     logging.info(' '.join('{:02x}'.format(x) for x in bytearray(cmd)))
+
+    #     if self.access:
+    #         response = self.send_command(cmd, lenght)
+    #         logging.info("Power Response:")
+    #         logging.info(' '.join('{:02x}'.format(x) for x in bytearray(response)))
+    #         if response:
+    #             value = response[2]
+    #             value += response[3] << 8
+    #             value += response[1] << 16
+    #             value = float(value)
+    #             logging.info("Power value: {}".format(value))
+    #             return round((value / koef), 2)
+    #     return False
+
+    def get_activePower_last_day(self):
+        cmd = [0x00, 0x05, 0x00, 0x00]
+        lenght = 19
+        koef = 1000
+        cmd = [int2byte(0), int2byte(5), int2byte(5), int2byte(0)]
+        crc = computeCRC(cmd)
+        cmd = cmd + self.long_to_bytes(crc)
+        cmd = bytearray(cmd)
+        # logging.info("Active cmd:")
+        # logging.info(' '.join('{:02x}'.format(x) for x in bytearray(cmd)))
+
+        if self.access:
+            response = self.send_command(cmd, lenght)
+            # logging.info("Active  Response:")
+            # logging.info(' '.join('{:02x}'.format(x) for x in bytearray(response)))
+            if response:
+                value = response[3]
+                value += response[4] << 8
+                value += response[1] << 16
+                value += response[2] << 24
+                value = float(value)
+                # logging.info("Active  value: {}".format(value))
+                return value / koef
+        return False
 
     def get_activePower(self):
-        cmd = [0x00, 0x05, 0x00, 0x00]
+        lenght = 19
+        koef = 1000
+        cmd = [int2byte(0), int2byte(5), int2byte(4), int2byte(0)]
+        crc = computeCRC(cmd)
+        cmd = cmd + self.long_to_bytes(crc)
+        cmd = bytearray(cmd)
+        # logging.info("Active cmd:")
+        # logging.info(' '.join('{:02x}'.format(x) for x in bytearray(cmd)))
+
+        if self.access:
+            response = self.send_command(cmd, lenght)
+            # logging.info("Active  Response:")
+            # logging.info(' '.join('{:02x}'.format(x) for x in bytearray(response)))
+            if response:
+                value = response[3]
+                value += response[4] << 8
+                value += response[1] << 16
+                value += response[2] << 24
+                value = float(value)
+                # logging.info("Active  value: {}".format(value))
+                return value / koef
+        return False
 
     def get_sumPower(self):
-        cmd = [0x00, 0x08, 0x11, 0x00]
+        # cmd = [0x00, 0x08, 0x11, 0x00]
+        lenght = 6
+        koef = 100 * 1000
+        cmd = [int2byte(0), int2byte(8), int2byte(17), int2byte(0)]
+        crc = computeCRC(cmd)
+        cmd = cmd + self.long_to_bytes(crc)
+        cmd = bytearray(cmd)
+        # logging.info("Sum cmd:")
+        # logging.info(' '.join('{:02x}'.format(x) for x in bytearray(cmd)))
+
+        if self.access:
+            response = self.send_command(cmd, lenght)
+            # logging.info("Sum  Response:")
+            # logging.info(' '.join('{:02x}'.format(x) for x in bytearray(response)))
+            if response:
+                value = response[2]
+                value += response[3] << 8
+                value += response[1] << 16
+                value = float(value)
+                # logging.info("Active  value: {}".format(value))
+                return round((value / koef), 2)
+        return False
 
     def get_data(self):
         self.connected()
-        freq = self.get_freq()
+        
+        freq = '%.2f'%self.get_freq()
+        
+        temp = '%.2f'%24.00
+
+        a1 = '%.2f'%self.get_current(1)
+        a2 = '%.2f'%self.get_current(2)
+        a3 = '%.2f'%self.get_current(3)
+
+        v1 = '%.2f'%self.get_voltage(1)
+        v2 = '%.2f'%self.get_voltage(2)
+        v3 = '%.2f'%self.get_voltage(3)
+
+        last_day = '%.2f'%self.get_activePower_last_day()
+        
+        today = '%.2f'%self.get_activePower()
+
+        sumPower = '%.2f'%self.get_sumPower()
+
+        # power = '%.2f'%self.get_power()
         # /data/setElectric.php?d=2020-11-05%2016:58:35&id=&n=2&r=1,2,3,4,5,6,7,8,9,10,11&v=
         # 1 - 61061.85,
         # 2 - 61109.58,
@@ -281,5 +416,7 @@ class RS485():
         # 9 - 226.07,
         # 10- 49.98,
         # 11- 4592.30
-        return ['0','0','0','0','0','0','0','0','0',freq,'0']
+        response = [last_day,today,temp,a1,a2,a3,v1,v2,v3,freq,sumPower]
+        # logging.info("response: {}".format(response))
+        return response
 
