@@ -3,21 +3,21 @@ import regs
 REGS = [
     {
         'id': 1543,
-        'class': AbstractString,
+        'class': 'str',
         'lenght': 5,
     },
     {
         'id': 1549,
-        'class': AbstractString,
+        'class': 'str',
         'lenght': 20,
     },
     {
         'id': 1610,
-        'class': regs.DanfossInt32Reg,
+        'class': 'regs.DanfossInt32Reg',
     },
     {
         'id': 1612,
-        'class': regs.DanfossUint16Reg,
+        'ratio': 10
     },
     {
         'id': 1622,

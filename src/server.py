@@ -218,19 +218,21 @@ class Handler(RequestHandler):
 
         for i, reg in enumerate(regs):
             if units[i] == '1': # i1 не подтверждено
-                new_regs.update({reg: 'u1'})   
-            elif units[i] == '2': # i2
-                new_regs.update({reg: 'u2'})   
-            elif units[i] == '3': # i4
-                new_regs.update({reg: 'u4'})   
-            elif units[i] == '4': # u1
                 new_regs.update({reg: 'i1'})   
+            elif units[i] == '2': # i2
+                new_regs.update({reg: 'i2'})   
+            elif units[i] == '3': # i4
+                new_regs.update({reg: 'i4'})   
+            elif units[i] == '4': # u1
+                new_regs.update({reg: 'u1'})   
             elif units[i] == '5': # u2
+                new_regs.update({reg: 'i2'})   
+            elif units[i] == '6': # f не подтверждено
                 new_regs.update({reg: 'u2'})   
-            # elif units[i] == '6': # f не подтверждено
-            #     new_regs.update({reg: 'f'})   
             elif units[i] == '7': # str
-                new_regs.update({reg: 'str'})   
+                new_regs.update({reg: 's5'})   
+            elif units[i] == '8': # str
+                new_regs.update({reg: 's20'})
 
         cfg['Devices'][device_id]['regs'] = new_regs
 
@@ -345,26 +347,23 @@ class Handler(RequestHandler):
         return
 
     def set_reg(self, query): # надо реализовать
-        # n_value = query.get('n', [''])[0]
-        # r_value = query.get('r', [''])[0]
-        # v_value = query.get('v', [''])[0]
-        # t_value = query.get('t', [''])[0]
-        # mb = ModbusDevice(n_value)
-        # mb.modbus_connect()
-        # r = r_value.split(',')
-        # regs = list(map(int, r))
-        # v = v_value.split(',')
-        # values = list(map(int, v))
-        # mb.write_modbus(regs, values)
-        # message = b'n value: ' + n_value.encode('utf-8') + \
-        #           ', r_value: ' + r_value.encode('utf-8') + \
-        #           ', v_value: ' + v_value.encode('utf-8') + \
-        #           ', t_value: ' + t_value.encode('utf-8')
-        # self.send_response(200)
-        # self.send_header('Content-Type', 'text/plain')
-        # self.send_header('Content-Length', len(message))
-        # self.end_headers()
-        # self.wfile.write(message)
+        cfg = config.get_config()
+        # now = datetime.now()
+        # now = unicode(now.replace(microsecond=0))
+        n_value = query.get('n', [''])[0]
+        r_value = query.get('r', [''])[0]
+        v_value = int(query.get('v', [''])[0])
+        modbus_client = Modbus(cfg, n_value)
+
+        modbus_client.write_modbus_fc(r_value, v_value)
+        
+        message = 'OK'
+
+        self.send_response(200)
+        self.send_header('Content-Type', 'text/html')
+        self.send_header('Content-Length', len(message))
+        self.end_headers()
+        self.wfile.write(message)
         return
 
     def res_exception(self, query):
