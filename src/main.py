@@ -6,7 +6,7 @@ import threading
 import logging
 import config
 import fc
-import merc
+import serial_device
 import os
 
 modbus_lock = threading.Lock()
@@ -28,20 +28,20 @@ class startWork(TimerEvtHandle):
             self.cfg = config.get_config()
             # Создаем инстансы устроиств из файла конфигурации
             for device in self.cfg["Devices"]:
-                if self.cfg["Devices"][device]['name'].lower() == 'fc':
-                    interval = int(self.cfg['Devices'][device]['send_interval'])
-                    app = fc.InitTimer(interval, device)
-                    t = threading.Thread(target=app.start)
-                    t.daemon = True
-                    t.start()
-                    logging.info('FC device created!')
-                elif self.cfg["Devices"][device]['name'].lower() == 'mercury':
+                # if self.cfg["Devices"][device]['name'].lower() == 'fc':
+                interval = int(self.cfg['Devices'][device]['send_interval'])
+                app = serial_device.InitTimer(interval, device)
+                t = threading.Thread(target=app.start)
+                t.daemon = True
+                t.start()
+                logging.info('{0} device created!'.format(self.cfg['Devices'][device]['type']))
+                # elif self.cfg["Devices"][device]['name'].lower() == 'mercury':
                     # interval = int(self.cfg['Devices'][device]['send_interval'])
                     # app = merc.InitTimer(interval, device)
                     # t = threading.Thread(target=app.start)
                     # t.daemon = True
                     # t.start()
-                    logging.info('Mercury device created!')
+                    # logging.info('Mercury device created!')
 
         self.last_mtime = current_mtime
 

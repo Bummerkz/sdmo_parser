@@ -1,7 +1,7 @@
 class AbstractReg:
     LENGTH = 0
 
-    def __init__(self, reg_id=None, reg_addr=None, raw: bytes = None, value=None):
+    def __init__(self, reg_id=None, reg_addr=None, raw = None, value=None):
         self._id = None
         self._addr = None
         self._raw = None
@@ -13,7 +13,7 @@ class AbstractReg:
             self.addr = reg_addr
 
         if raw is not None:
-            self.raw = raw
+            self.raw = bytes(raw)
         elif value is not None:
             self.value = value
 
@@ -282,7 +282,7 @@ class MercuryReg(AbstractReg):
     def _get_uint(self):
         raise NotImplementedError
 
-    def _get_raw(self, val: int):
+    def _get_raw(self, val):
         raise NotImplementedError
 
     def _calc_value_by_raw(self):
@@ -310,7 +310,7 @@ class MercuryUint32Reg(MercuryReg):
 
         return val
 
-    def _get_raw(self, val: int):
+    def _get_raw(self, val):
         tmp = list()
         tmp.append((val >> 16) & 0xFF)
         tmp.append((val >> 24) & 0xFF)
@@ -330,7 +330,7 @@ class MercuryUint24Reg(MercuryReg):
 
         return val
 
-    def _get_raw(self, val: int):
+    def _get_raw(self, val):
         tmp = list()
         tmp.append((val >> 16) & 0xFF)
         tmp.append(val & 0xFF)
@@ -366,28 +366,3 @@ class MercuryActPowerReg(MercuryUint24Reg):
             result *= -1
 
         return result
-
-
-class NevaEnergyReg(GenericFraction32Reg):
-    PRECISION = 2
-
-
-class NevaPowerReg(GenericFraction32Reg):
-    PRECISION = 2
-
-
-class NevaCurrentReg(GenericFraction16Reg):
-    PRECISION = 3
-
-
-class NevaVoltageReg(GenericFraction16Reg):
-    PRECISION = 2
-
-
-class NevaFreqReg(GenericFraction16Reg):
-    PRECISION = 2
-
-
-class NevaTemperatureReg(GenericInt8Reg):
-    PRECISION = 0
-
