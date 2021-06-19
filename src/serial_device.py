@@ -64,7 +64,7 @@ class InitTimer(TimerEvtHandle):
                             logging.info("status code: " + str(r.status_code))
                 except Exception as e:
                     logging.error(e)
-        except requests.exceptions.RequestException as e:  # This is the correct syntax
+        except requests.exceptions.RequestException as e: 
             logging.error(e)
 
     def send_el_data(self):
@@ -94,5 +94,5 @@ class InitTimer(TimerEvtHandle):
                             logging.info("status code: " + str(r.status_code))
                 except Exception as e:
                     logging.error(e)
-        except requests.exceptions.RequestException as e:  # This is the correct syntax
+        except requests.exceptions.RequestException as e:
             logging.error(e)

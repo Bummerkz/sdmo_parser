@@ -1,4 +1,7 @@
 # -*- coding:utf-8 -*-
+
+# Классы устройств
+
 # import regs
 import time
 import threading
@@ -57,7 +60,7 @@ class Modbus():
 
         UNIT = self.unit
         v = self.regs[reg]
-        address = int(reg) * 10 - 1
+        address = int(reg) * 10 - 1 # Адрес регистра, например: параметра 16-10 - 1610 * 10 - 1 = 16099
 
         builder = BinaryPayloadBuilder(byteorder=Endian.Big, wordorder=Endian.Big)
 
