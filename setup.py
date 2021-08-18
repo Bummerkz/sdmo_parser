@@ -1,10 +1,10 @@
 from setuptools import setup, find_packages
 setup(
-    name='dhcpStatus',
-    sdk_version='1.1.10',
-    version='0.0.1',
-    author='whb',
-    author_email='whb@ursalink.com',
+    name='sdmo_parser',
+    sdk_version='2.1.4',
+    version='0.1.0',
+    author='khismatullin_Vladimir',
+    author_email='hismatullin.v@gmail.com',
     description='',
     license='PRIVATE',
     packages = find_packages('src'),
@@ -14,6 +14,6 @@ setup(
     ],
     entry_points = """
         [console_scripts]
-        dhcpStatus = Application:main
+        sdmo_parser = Application:main
         """
 )
