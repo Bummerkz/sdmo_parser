@@ -1,1 +1,305 @@
-[2021-08-18 12:53:36,881][MainThread][INFO] Started version 0.1.0 at 2021-08-18 12:53:36.881840
+[2021-08-26 09:41:00,653][MainThread][INFO] Started version 0.1.0 at 2021-08-26 09:41:00.653030
+[2021-08-26 10:00:00,095][MainThread][INFO] Started version 0.1.0 at 2021-08-26 10:00:00.095590
+[2021-08-26 10:03:26,618][MainThread][INFO] Started version 0.1.0 at 2021-08-26 10:03:26.618486
+[2021-08-26 10:03:26,625][DeviceProcessorThread][INFO] Started message processor
+[2021-08-26 10:03:30,659][DeviceProcessorThread][DEBUG] Got a http GET request: Name: /, Params {}
+[2021-08-26 10:03:56,893][DeviceProcessorThread][DEBUG] Got a http GET request: Name: /, Params {'r': '1,2,3', 'v': '3,2,1'}
+[2021-08-26 10:05:51,233][MainThread][INFO] Started version 0.1.0 at 2021-08-26 10:05:51.232927
+[2021-08-26 10:05:51,239][DeviceProcessorThread][INFO] Started message processor
+[2021-08-26 10:05:55,271][DeviceProcessorThread][INFO] Stopping message processor
+[2021-08-26 10:14:16,807][MainThread][INFO] Started version 0.1.0 at 2021-08-26 10:14:16.807018
+[2021-08-26 10:14:16,813][DeviceProcessorThread][INFO] Started message processor
+[2021-08-26 10:14:17,828][DeviceProcessorThread][INFO] Stopping message processor
+[2021-08-26 10:15:12,017][MainThread][INFO] Started version 0.1.0 at 2021-08-26 10:15:12.017523
+[2021-08-26 10:15:12,024][DeviceProcessorThread][INFO] Started message processor
+[2021-08-26 10:15:14,039][DeviceProcessorThread][INFO] Stopping message processor
+[2021-08-26 10:15:45,952][MainThread][INFO] Started version 0.1.0 at 2021-08-26 10:15:45.952459
+[2021-08-26 10:15:45,958][DeviceProcessorThread][INFO] Started message processor
+[2021-08-26 10:15:46,965][DeviceProcessorThread][INFO] Stopping message processor
+[2021-08-26 10:15:57,695][MainThread][INFO] Started version 0.1.0 at 2021-08-26 10:15:57.695739
+[2021-08-26 10:15:57,701][DeviceProcessorThread][INFO] Started message processor
+[2021-08-26 10:16:02,756][DeviceProcessorThread][DEBUG] Got a http GET request: Name: /, Params {'r': '1,2,3', 'v': '3,2,1'}
+[2021-08-26 10:16:53,144][DeviceProcessorThread][DEBUG] Got a http GET request: Name: /, Params {}
+[2021-08-26 10:17:37,559][DeviceProcessorThread][DEBUG] Got a http GET request: Name: /setReg.php, Params {}
+[2021-08-26 10:17:43,604][DeviceProcessorThread][INFO] Stopping message processor
+[2021-08-26 10:17:46,749][MainThread][INFO] Started version 0.1.0 at 2021-08-26 10:17:46.749526
+[2021-08-26 10:17:46,756][DeviceProcessorThread][INFO] Started message processor
+[2021-08-26 10:17:50,781][DeviceProcessorThread][DEBUG] Got a http GET request: Name: /setReg.php, Params {}
+[2021-08-26 10:17:50,781][DeviceProcessorThread][INFO] Got a command to set device registers
+[2021-08-26 10:17:50,781][DeviceProcessorThread][WARNING] Got empty or wrong setReg request
+[2021-08-26 10:19:59,805][DeviceProcessorThread][INFO] Stopping message processor
+[2021-08-26 10:24:11,723][MainThread][INFO] Started version 0.1.0 at 2021-08-26 10:24:11.723284
+[2021-08-26 10:24:39,243][MainThread][INFO] Started version 0.1.0 at 2021-08-26 10:24:39.243674
+[2021-08-26 10:24:39,250][DeviceProcessorThread][INFO] Started message processor
+[2021-08-26 10:25:15,576][DeviceProcessorThread][INFO] Stopping message processor
+[2021-08-26 10:25:24,546][MainThread][INFO] Started version 0.1.0 at 2021-08-26 10:25:24.546302
+[2021-08-26 10:25:24,553][DeviceProcessorThread][INFO] Started message processor
+[2021-08-26 10:27:27,571][DeviceProcessorThread][INFO] Stopping message processor
+[2021-08-26 10:27:30,859][MainThread][INFO] Started version 0.1.0 at 2021-08-26 10:27:30.858308
+[2021-08-26 10:27:30,866][DeviceProcessorThread][INFO] Started message processor
+[2021-08-26 10:27:50,010][DeviceProcessorThread][INFO] Stopping message processor
+[2021-08-26 10:29:13,911][MainThread][INFO] Started version 0.1.0 at 2021-08-26 10:29:13.911189
+[2021-08-26 10:29:13,919][DeviceProcessorThread][INFO] Started message processor
+[2021-08-26 10:29:29,073][DeviceProcessorThread][DEBUG] Got a http GET request: Name: /setReg.php, Params {'r': '1', 'id': '1', 'v': '1'}
+[2021-08-26 10:29:29,073][DeviceProcessorThread][INFO] Got a command to set device registers
+[2021-08-26 10:29:29,074][DeviceProcessorThread][WARNING] Unknown device id 1
+[2021-08-26 10:30:11,461][DeviceProcessorThread][INFO] Stopping message processor
+[2021-08-26 11:43:31,770][MainThread][INFO] Started version 0.1.0 at 2021-08-26 11:43:31.770159
+[2021-08-26 11:43:31,777][ListenThread][INFO] Started listening thread
+[2021-08-26 11:43:31,777][MainThread][INFO] Started listen
+[2021-08-26 11:43:31,778][DeviceProcessorThread][INFO] Started message processor
+[2021-08-26 11:44:47,367][DeviceProcessorThread][INFO] Stopping message processor
+[2021-08-26 11:44:49,431][MainThread][INFO] Started version 0.1.0 at 2021-08-26 11:44:49.431743
+[2021-08-26 11:44:49,438][ListenThread][INFO] Started listening thread
+[2021-08-26 11:44:49,438][MainThread][INFO] Started listen
+[2021-08-26 11:44:49,438][ListenThread][INFO] Sending message to device %s
+[2021-08-26 11:44:49,439][DeviceProcessorThread][INFO] Started message processor
+[2021-08-26 11:45:09,453][ListenThread][INFO] Sending message to device %s
+[2021-08-26 11:45:29,466][ListenThread][INFO] Sending message to device %s
+[2021-08-26 11:45:49,480][ListenThread][INFO] Sending message to device %s
+[2021-08-26 11:46:09,481][ListenThread][INFO] Sending message to device %s
+[2021-08-26 11:46:27,286][DeviceProcessorThread][INFO] Stopping message processor
+[2021-08-26 11:46:29,495][ListenThread][INFO] Sending message to device %s
+[2021-08-26 11:46:49,502][ListenThread][INFO] Sending message to device %s
+[2021-08-26 11:47:09,511][ListenThread][INFO] Sending message to device %s
+[2021-08-26 11:47:23,366][MainThread][INFO] Started version 0.1.0 at 2021-08-26 11:47:23.366560
+[2021-08-26 11:47:23,372][ListenThread][INFO] Started listening thread
+[2021-08-26 11:47:23,372][MainThread][INFO] Started listen
+[2021-08-26 11:47:23,372][ListenThread][INFO] Sending message to device %s
+[2021-08-26 11:47:23,373][DeviceProcessorThread][INFO] Started message processor
+[2021-08-26 11:47:43,384][ListenThread][INFO] Sending message to device %s
+[2021-08-26 11:47:47,581][DeviceProcessorThread][INFO] Stopping message processor
+[2021-08-26 11:47:47,581][MainThread][INFO] Stopping listening
+[2021-08-26 11:48:03,388][ListenThread][INFO] Stopping listening server
+[2021-08-26 11:48:03,388][MainThread][DEBUG] Stopped
+[2021-08-26 11:48:21,798][MainThread][INFO] Started version 0.1.0 at 2021-08-26 11:48:21.798758
+[2021-08-26 11:48:21,805][MainThread][INFO] Started listen
+[2021-08-26 11:48:21,806][ListenThread][INFO] Started listening thread
+[2021-08-26 11:48:21,806][ListenThread][INFO] Sending message to device %s
+[2021-08-26 11:48:21,807][DeviceProcessorThread][INFO] Started message processor
+[2021-08-26 11:48:41,816][ListenThread][INFO] Sending message to device %s
+[2021-08-26 11:48:48,963][DeviceProcessorThread][INFO] Stopping message processor
+[2021-08-26 11:48:48,963][MainThread][INFO] Stopping listening
+[2021-08-26 11:49:01,823][ListenThread][INFO] Stopping listening server
+[2021-08-26 11:49:01,823][MainThread][DEBUG] Stopped
+[2021-08-26 11:50:06,921][MainThread][INFO] Started version 0.1.0 at 2021-08-26 11:50:06.921495
+[2021-08-26 11:50:06,931][MainThread][INFO] Started listen
+[2021-08-26 11:50:06,931][ListenThread][INFO] Started listening thread
+[2021-08-26 11:50:06,932][ListenThread][INFO] Sending message to device %s
+[2021-08-26 11:50:06,933][DeviceProcessorThread][INFO] Started message processor
+[2021-08-26 11:50:13,851][ListenThread][INFO] Sending message to device %s
+[2021-08-26 11:51:30,988][MainThread][INFO] Started version 0.1.0 at 2021-08-26 11:51:30.988224
+[2021-08-26 11:51:30,995][MainThread][INFO] Started listen
+[2021-08-26 11:51:30,996][ListenThread][INFO] Started listening thread
+[2021-08-26 11:51:30,996][DeviceProcessorThread][INFO] Started message processor
+[2021-08-26 11:51:30,996][ListenThread][INFO] Sending message to device %s
+[2021-08-26 11:51:59,664][MainThread][INFO] Started version 0.1.0 at 2021-08-26 11:51:59.664377
+[2021-08-26 11:51:59,673][MainThread][INFO] Started listen
+[2021-08-26 11:51:59,674][ListenThread][INFO] Started listening thread
+[2021-08-26 11:52:01,734][DeviceProcessorThread][INFO] Started message processor
+[2021-08-26 11:52:02,836][ListenThread][INFO] Sending message to device %s
+[2021-08-26 11:52:49,033][MainThread][INFO] Started version 0.1.0 at 2021-08-26 11:52:49.033395
+[2021-08-26 11:52:49,042][MainThread][INFO] Started listen
+[2021-08-26 11:52:49,042][ListenThread][INFO] Started listening thread
+[2021-08-26 11:52:49,043][ListenThread][INFO] Sending message to device %s
+[2021-08-26 11:52:49,043][DeviceProcessorThread][INFO] Started message processor
+[2021-08-26 11:52:54,050][ListenThread][INFO] Sending message to device %s
+[2021-08-26 11:53:16,478][MainThread][INFO] Started version 0.1.0 at 2021-08-26 11:53:16.478482
+[2021-08-26 11:53:16,485][MainThread][INFO] Started listen
+[2021-08-26 11:53:16,486][ListenThread][INFO] Started listening thread
+[2021-08-26 11:53:16,486][ListenThread][INFO] Sending message to device %s
+[2021-08-26 11:53:16,487][DeviceProcessorThread][INFO] Started message processor
+[2021-08-26 11:53:33,044][ListenThread][INFO] Sending message to device %s
+[2021-08-26 11:53:38,069][ListenThread][INFO] Sending message to device %s
+[2021-08-26 11:56:09,885][MainThread][INFO] Started version 0.1.0 at 2021-08-26 11:56:09.885902
+[2021-08-26 11:56:09,892][MainThread][INFO] Started listen
+[2021-08-26 11:56:09,892][ListenThread][INFO] Started listening thread
+[2021-08-26 11:56:09,893][ListenThread][INFO] Sending message to device %s
+[2021-08-26 11:56:09,893][DeviceProcessorThread][INFO] Started message processor
+[2021-08-26 11:56:14,895][ListenThread][INFO] Sending message to device %s
+[2021-08-26 11:56:19,911][ListenThread][INFO] Sending message to device %s
+[2021-08-26 11:56:24,924][ListenThread][INFO] Sending message to device %s
+[2021-08-26 11:56:29,938][ListenThread][INFO] Sending message to device %s
+[2021-08-26 11:59:27,250][MainThread][INFO] Started version 0.1.0 at 2021-08-26 11:59:27.250307
+[2021-08-26 11:59:27,259][MainThread][INFO] Started listen
+[2021-08-26 11:59:27,259][ListenThread][INFO] Started listening thread
+[2021-08-26 11:59:27,260][ListenThread][INFO] Sending message to device %s
+[2021-08-26 11:59:27,261][DeviceProcessorThread][INFO] Started message processor
+[2021-08-26 11:59:32,270][ListenThread][INFO] Sending message to device %s
+[2021-08-26 11:59:37,276][ListenThread][INFO] Sending message to device %s
+[2021-08-26 11:59:42,286][ListenThread][INFO] Sending message to device %s
+[2021-08-26 11:59:47,292][ListenThread][INFO] Sending message to device %s
+[2021-08-26 11:59:52,305][ListenThread][INFO] Sending message to device %s
+[2021-08-26 11:59:57,308][ListenThread][INFO] Sending message to device %s
+[2021-08-26 12:00:02,310][ListenThread][INFO] Sending message to device %s
+[2021-08-26 12:00:07,325][ListenThread][INFO] Sending message to device %s
+[2021-08-26 12:00:12,330][ListenThread][INFO] Sending message to device %s
+[2021-08-26 12:00:17,341][ListenThread][INFO] Sending message to device %s
+[2021-08-26 12:00:22,345][ListenThread][INFO] Sending message to device %s
+[2021-08-26 12:00:27,349][ListenThread][INFO] Sending message to device %s
+[2021-08-26 12:00:32,365][ListenThread][INFO] Sending message to device %s
+[2021-08-26 12:00:37,376][ListenThread][INFO] Sending message to device %s
+[2021-08-26 12:00:42,383][ListenThread][INFO] Sending message to device %s
+[2021-08-26 12:00:47,387][ListenThread][INFO] Sending message to device %s
+[2021-08-26 12:00:52,394][ListenThread][INFO] Sending message to device %s
+[2021-08-26 12:00:58,654][MainThread][INFO] Started version 0.1.0 at 2021-08-26 12:00:58.653107
+[2021-08-26 12:00:58,660][MainThread][INFO] Started listen
+[2021-08-26 12:00:58,661][ListenThread][INFO] Started listening thread
+[2021-08-26 12:00:58,661][ListenThread][INFO] Sending message to device %s
+[2021-08-26 12:00:58,662][DeviceProcessorThread][INFO] Started message processor
+[2021-08-26 12:01:03,667][ListenThread][INFO] Sending message to device %s
+[2021-08-26 12:01:08,671][ListenThread][INFO] Sending message to device %s
+[2021-08-26 12:01:13,682][ListenThread][INFO] Sending message to device %s
+[2021-08-26 12:01:37,809][MainThread][INFO] Started version 0.1.0 at 2021-08-26 12:01:37.809480
+[2021-08-26 12:01:37,818][MainThread][INFO] Started listen
+[2021-08-26 12:01:37,818][ListenThread][INFO] Started listening thread
+[2021-08-26 12:01:37,819][ListenThread][INFO] Sending message to device %s
+[2021-08-26 12:01:37,820][DeviceProcessorThread][INFO] Started message processor
+[2021-08-26 12:01:42,830][ListenThread][INFO] Sending message to device %s
+[2021-08-26 12:01:47,841][ListenThread][INFO] Sending message to device %s
+[2021-08-26 12:01:52,855][ListenThread][INFO] Sending message to device %s
+[2021-08-26 12:01:57,867][ListenThread][INFO] Sending message to device %s
+[2021-08-26 12:02:02,881][ListenThread][INFO] Sending message to device %s
+[2021-08-26 12:02:07,886][ListenThread][INFO] Sending message to device %s
+[2021-08-26 12:02:12,894][ListenThread][INFO] Sending message to device %s
+[2021-08-26 12:02:21,340][MainThread][INFO] Started version 0.1.0 at 2021-08-26 12:02:21.340634
+[2021-08-26 12:02:21,348][MainThread][INFO] Started listen
+[2021-08-26 12:02:21,349][ListenThread][INFO] Started listening thread
+[2021-08-26 12:02:21,350][ListenThread][INFO] Sending message to device %s
+[2021-08-26 12:02:21,350][DeviceProcessorThread][INFO] Started message processor
+[2021-08-26 12:02:26,364][ListenThread][INFO] Sending message to device %s
+[2021-08-26 12:02:41,341][MainThread][INFO] Started version 0.1.0 at 2021-08-26 12:02:41.340785
+[2021-08-26 12:02:41,348][ListenThread][INFO] Started listening thread
+[2021-08-26 12:02:41,348][MainThread][INFO] Started listen
+[2021-08-26 12:02:41,348][ListenThread][INFO] Sending message to device %s
+[2021-08-26 12:02:41,349][DeviceProcessorThread][INFO] Started message processor
+[2021-08-26 12:02:46,509][ListenThread][INFO] Sending message to device %s
+[2021-08-26 12:02:52,759][ListenThread][INFO] Sending message to device %s
+[2021-08-26 12:04:10,380][ListenThread][INFO] Sending message to device %s
+[2021-08-26 12:05:22,037][MainThread][INFO] Started version 0.1.0 at 2021-08-26 12:05:22.037096
+[2021-08-26 12:05:22,045][MainThread][INFO] Started listen
+[2021-08-26 12:05:22,046][ListenThread][INFO] Started listening thread
+[2021-08-26 12:05:22,047][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:05:22,047][DeviceProcessorThread][INFO] Started message processor
+[2021-08-26 12:05:40,878][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:05:47,290][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:05:52,651][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:06:15,843][MainThread][INFO] Started version 0.1.0 at 2021-08-26 12:06:15.843080
+[2021-08-26 12:06:15,854][MainThread][INFO] Started listen
+[2021-08-26 12:06:15,855][ListenThread][INFO] Started listening thread
+[2021-08-26 12:06:15,856][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:06:15,857][DeviceProcessorThread][INFO] Started message processor
+[2021-08-26 12:06:26,174][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:06:36,188][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:06:46,191][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:06:56,202][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:07:09,018][MainThread][INFO] Started version 0.1.0 at 2021-08-26 12:07:09.018766
+[2021-08-26 12:07:09,026][MainThread][INFO] Started listen
+[2021-08-26 12:07:09,026][ListenThread][INFO] Started listening thread
+[2021-08-26 12:07:09,027][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:07:09,028][DeviceProcessorThread][INFO] Started message processor
+[2021-08-26 12:07:19,032][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:07:31,106][MainThread][INFO] Started version 0.1.0 at 2021-08-26 12:07:31.106352
+[2021-08-26 12:07:31,115][MainThread][INFO] Started listen
+[2021-08-26 12:07:31,115][ListenThread][INFO] Started listening thread
+[2021-08-26 12:09:36,798][MainThread][INFO] Started version 0.1.0 at 2021-08-26 12:09:36.798085
+[2021-08-26 12:09:36,805][MainThread][INFO] Started listen
+[2021-08-26 12:09:36,806][ListenThread][INFO] Started listening thread
+[2021-08-26 12:09:36,807][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:09:36,807][DeviceProcessorThread][INFO] Started message processor
+[2021-08-26 12:09:37,321][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:09:37,832][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:09:38,343][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:09:38,853][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:09:39,363][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:09:39,878][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:09:40,386][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:09:40,889][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:09:41,403][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:09:41,910][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:09:42,416][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:09:42,931][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:09:43,440][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:09:43,942][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:09:44,455][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:09:48,601][MainThread][INFO] Started version 0.1.0 at 2021-08-26 12:09:48.600338
+[2021-08-26 12:09:48,608][MainThread][INFO] Started listen
+[2021-08-26 12:09:48,608][ListenThread][INFO] Started listening thread
+[2021-08-26 12:09:48,609][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:09:48,610][DeviceProcessorThread][INFO] Started message processor
+[2021-08-26 12:09:57,947][MainThread][INFO] Started version 0.1.0 at 2021-08-26 12:09:57.947015
+[2021-08-26 12:09:57,955][MainThread][INFO] Started listen
+[2021-08-26 12:09:57,955][ListenThread][INFO] Started listening thread
+[2021-08-26 12:09:57,956][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:09:57,957][DeviceProcessorThread][INFO] Started message processor
+[2021-08-26 12:11:17,684][MainThread][INFO] Started version 0.1.0 at 2021-08-26 12:11:17.684140
+[2021-08-26 12:11:17,692][MainThread][INFO] Started listen
+[2021-08-26 12:11:17,692][ListenThread][INFO] Started listening thread
+[2021-08-26 12:11:17,694][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:11:17,695][DeviceProcessorThread][INFO] Started message processor
+[2021-08-26 12:11:20,805][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:11:21,316][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:11:26,631][MainThread][INFO] Started version 0.1.0 at 2021-08-26 12:11:26.631993
+[2021-08-26 12:11:26,639][MainThread][INFO] Started listen
+[2021-08-26 12:11:26,639][ListenThread][INFO] Started listening thread
+[2021-08-26 12:11:26,640][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:11:26,641][DeviceProcessorThread][INFO] Started message processor
+[2021-08-26 12:11:27,149][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:11:27,651][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:11:28,160][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:11:28,672][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:11:29,176][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:11:29,678][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:11:30,189][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:11:30,696][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:11:31,204][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:11:31,716][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:11:32,227][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:11:32,742][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:11:33,253][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:11:33,764][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:11:34,275][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:11:34,781][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:11:35,286][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:11:35,787][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:11:36,290][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:11:36,802][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:11:37,314][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:11:37,816][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:11:38,326][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:11:38,839][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:11:39,341][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:11:39,853][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:11:40,360][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:11:40,865][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:11:41,379][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:11:41,889][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:11:42,398][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:11:42,910][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:11:43,419][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:11:43,934][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:11:44,448][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:11:44,957][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:11:45,471][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:11:45,977][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:11:46,479][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:11:46,993][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:11:47,508][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:11:48,020][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:11:48,525][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:11:49,032][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:12:12,175][MainThread][INFO] Started version 0.1.0 at 2021-08-26 12:12:12.175006
+[2021-08-26 12:12:12,183][MainThread][INFO] Started listen
+[2021-08-26 12:12:12,183][ListenThread][INFO] Started listening thread
+[2021-08-26 12:12:12,184][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:12:12,184][DeviceProcessorThread][INFO] Started message processor
+[2021-08-26 12:12:48,158][MainThread][INFO] Started version 0.1.0 at 2021-08-26 12:12:48.158387
+[2021-08-26 12:12:48,169][MainThread][INFO] Started listen
+[2021-08-26 12:12:48,169][ListenThread][INFO] Started listening thread
+[2021-08-26 12:12:48,170][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:12:48,171][DeviceProcessorThread][INFO] Started message processor
+[2021-08-26 12:12:53,365][DeviceProcessorThread][INFO] {'test': 'message'}
+[2021-08-26 12:12:58,183][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:12:58,400][DeviceProcessorThread][INFO] {'test': 'message'}
+[2021-08-26 12:13:08,189][ListenThread][INFO] Recieved message: testing
+[2021-08-26 12:13:08,500][DeviceProcessorThread][INFO] {'test': 'message'}

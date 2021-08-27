@@ -12,6 +12,13 @@ from logging.handlers import RotatingFileHandler
 
 from http_server import HTTPServer
 
+from processor import Processor
+
+from time import sleep
+
+# For testing
+from comm_test_queue import DeviceCommunicate
+
 # DEV flag for PC debugging
 DEV = True
 
@@ -19,7 +26,7 @@ DEV = True
 
 if DEV:
     APP_PATH = ""
-    MYAPP_NAME = "sdmo_parser\\"
+    MYAPP_NAME = ""
 else:
     APP_PATH = "/usr/pyuser/app/"
     MYAPP_NAME = "sdmo_parser/"
@@ -31,6 +38,8 @@ LOG_PATH = APP_PATH + MYAPP_NAME + 'logs'
 LOGGER_NAME = 'main'
 
 HTTP_SERVER_ADDR = ('', 81)
+
+CFG = config.get_config(dev=True)
 
 # Logger init
 def prepare_logger():
@@ -87,13 +96,31 @@ def start_app():
     http_server = HTTPServer(HTTP_SERVER_ADDR)
     http_server.start_serve()
 
-    cfg = config.get_config()
+    deviceCommunicate = DeviceCommunicate()
+    deviceCommunicate._start_listen()
+
+    processor = Processor(deviceCommunicate.get_send_queue(), deviceCommunicate.get_recv_queue(), http_server.queue, CFG)
+    processor.start()
+
+    while 1:
+        try:
+            if processor.is_running():
+                sleep(1)
+            else:
+                processor.stop()
+                processor.start()
+        except KeyboardInterrupt:
+            processor.stop()
+            http_server.server_close()
+            deviceCommunicate._stop_listen()
+            exit(0)
+
+    
     last_mtime = None
 
     # worker_thread = startWork(10, cfg, last_mtime)
     # worker_thread = threading.Thread(target=worker_thread.start)
     # worker_thread.start()
-
 
 def main(argv=sys.argv):
 

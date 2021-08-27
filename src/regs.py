@@ -387,3 +387,26 @@ class MercuryActPowerReg(MercuryUint24Reg):
             result *= -1
 
         return result
+
+class NevaEnergyReg(GenericFraction32Reg):
+    PRECISION = 2
+
+
+class NevaPowerReg(GenericFraction32Reg):
+    PRECISION = 2
+
+
+class NevaCurrentReg(GenericFraction16Reg):
+    PRECISION = 3
+
+
+class NevaVoltageReg(GenericFraction16Reg):
+    PRECISION = 2
+
+
+class NevaFreqReg(GenericFraction16Reg):
+    PRECISION = 2
+
+
+class NevaTemperatureReg(GenericInt8Reg):
+    PRECISION = 0
