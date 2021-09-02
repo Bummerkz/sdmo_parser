@@ -303,3 +303,153 @@
 [2021-08-26 12:12:58,400][DeviceProcessorThread][INFO] {'test': 'message'}
 [2021-08-26 12:13:08,189][ListenThread][INFO] Recieved message: testing
 [2021-08-26 12:13:08,500][DeviceProcessorThread][INFO] {'test': 'message'}
+[2021-08-27 09:51:06,766][MainThread][INFO] Started version 0.1.0 at 2021-08-27 09:51:06.766634
+[2021-08-27 09:51:06,773][MainThread][INFO] Started listen
+[2021-08-27 09:51:06,774][ListenThread][INFO] Started listening thread
+[2021-08-27 09:51:06,774][ListenThread][INFO] Recieved message: testing
+[2021-08-27 09:51:06,775][DeviceProcessorThread][INFO] Started message processor
+[2021-08-27 09:51:06,775][DeviceProcessorThread][INFO] {'test': 'message'}
+[2021-08-27 09:51:07,785][ListenThread][INFO] Recieved message: testing
+[2021-08-27 09:51:08,796][ListenThread][INFO] Recieved message: testing
+[2021-08-27 09:51:09,806][ListenThread][INFO] Recieved message: testing
+[2021-08-27 09:51:10,816][ListenThread][INFO] Recieved message: testing
+[2021-08-27 09:51:11,781][DeviceProcessorThread][INFO] {'test': 'message'}
+[2021-08-27 09:51:11,829][ListenThread][INFO] Recieved message: testing
+[2021-08-27 09:51:12,831][ListenThread][INFO] Recieved message: testing
+[2021-08-27 09:51:13,832][ListenThread][INFO] Recieved message: testing
+[2021-08-27 09:51:14,836][ListenThread][INFO] Recieved message: testing
+[2021-08-27 09:51:15,850][ListenThread][INFO] Recieved message: testing
+[2021-08-27 09:51:16,786][DeviceProcessorThread][INFO] {'test': 'message'}
+[2021-08-27 09:51:16,866][ListenThread][INFO] Recieved message: testing
+[2021-08-27 09:51:17,870][ListenThread][INFO] Recieved message: testing
+[2021-08-27 09:51:18,873][ListenThread][INFO] Recieved message: testing
+[2021-08-27 09:51:19,888][ListenThread][INFO] Recieved message: testing
+[2021-08-27 09:51:20,894][ListenThread][INFO] Recieved message: testing
+[2021-08-27 09:51:21,794][DeviceProcessorThread][INFO] {'test': 'message'}
+[2021-08-27 09:51:21,905][ListenThread][INFO] Recieved message: testing
+[2021-08-27 09:51:22,906][ListenThread][INFO] Recieved message: testing
+[2021-08-27 09:51:23,918][ListenThread][INFO] Recieved message: testing
+[2021-08-27 09:51:24,925][ListenThread][INFO] Recieved message: testing
+[2021-08-27 09:51:25,940][ListenThread][INFO] Recieved message: testing
+[2021-08-27 09:51:26,806][DeviceProcessorThread][INFO] {'test': 'message'}
+[2021-08-27 09:51:26,948][ListenThread][INFO] Recieved message: testing
+[2021-08-27 09:51:27,957][ListenThread][INFO] Recieved message: testing
+[2021-08-27 09:51:28,960][ListenThread][INFO] Recieved message: testing
+[2021-08-27 09:51:43,188][MainThread][INFO] Started version 0.1.0 at 2021-08-27 09:51:43.187346
+[2021-08-27 09:51:43,195][MainThread][INFO] Started listen
+[2021-08-27 09:51:43,195][ListenThread][INFO] Started listening thread
+[2021-08-27 09:51:43,196][ListenThread][INFO] Recieved message: testing
+[2021-08-27 09:51:43,196][DeviceProcessorThread][INFO] Started message processor
+[2021-08-27 09:53:01,432][ListenThread][INFO] Recieved message: testing
+[2021-08-27 09:53:01,433][DeviceProcessorThread][INFO] {'test': 'message'}
+[2021-08-27 09:53:02,433][ListenThread][INFO] Recieved message: testing
+[2021-08-27 09:53:03,434][ListenThread][INFO] Recieved message: testing
+[2021-08-27 09:53:04,446][ListenThread][INFO] Recieved message: testing
+[2021-08-27 09:53:07,442][MainThread][INFO] Started version 0.1.0 at 2021-08-27 09:53:07.442765
+[2021-08-27 09:53:07,449][MainThread][INFO] Started listen
+[2021-08-27 09:53:07,449][ListenThread][INFO] Started listening thread
+[2021-08-27 09:53:07,450][ListenThread][INFO] Recieved message: testing
+[2021-08-27 09:53:07,451][DeviceProcessorThread][INFO] Started message processor
+[2021-08-27 09:53:10,807][ListenThread][INFO] Recieved message: testing
+[2021-08-27 09:53:10,807][DeviceProcessorThread][INFO] {'test': 'message'}
+[2021-08-27 09:53:11,821][ListenThread][INFO] Recieved message: testing
+[2021-08-27 09:53:12,832][ListenThread][INFO] Recieved message: testing
+[2021-08-27 09:53:13,839][ListenThread][INFO] Recieved message: testing
+[2021-08-27 09:53:14,851][ListenThread][INFO] Recieved message: testing
+[2021-08-27 09:53:18,289][ListenThread][INFO] Recieved message: testing
+[2021-08-27 09:53:18,291][DeviceProcessorThread][INFO] {'test': 'message'}
+[2021-08-27 09:53:19,291][ListenThread][INFO] Recieved message: testing
+[2021-08-27 09:53:20,294][ListenThread][INFO] Recieved message: testing
+[2021-08-27 10:00:22,762][MainThread][INFO] Started version 0.1.0 at 2021-08-27 10:00:22.762325
+[2021-08-27 10:00:22,769][MainThread][INFO] Started devices thread
+[2021-08-27 10:00:22,769][CommThread][INFO] Started devices polling thread
+[2021-08-27 10:00:22,770][CommThread][INFO] Recieved message: 
+[2021-08-27 10:00:22,771][DeviceProcessorThread][INFO] Started message processor
+[2021-08-27 10:00:33,250][MainThread][INFO] Started version 0.1.0 at 2021-08-27 10:00:33.249532
+[2021-08-27 10:00:33,256][MainThread][INFO] Started devices thread
+[2021-08-27 10:00:33,256][CommThread][INFO] Started devices polling thread
+[2021-08-27 10:00:33,257][CommThread][INFO] Recieved message: 
+[2021-08-27 10:00:33,258][DeviceProcessorThread][INFO] Started message processor
+[2021-08-27 10:00:33,258][DeviceProcessorThread][INFO] {'test': 'message'}
+[2021-08-27 10:00:34,259][CommThread][INFO] Recieved message: 
+[2021-08-27 10:00:35,274][CommThread][INFO] Recieved message: 
+[2021-08-27 10:00:36,286][CommThread][INFO] Recieved message: 
+[2021-08-27 10:00:37,298][CommThread][INFO] Recieved message: 
+[2021-08-27 10:00:37,763][MainThread][INFO] Started version 0.1.0 at 2021-08-27 10:00:37.763333
+[2021-08-27 10:00:37,770][MainThread][INFO] Started devices thread
+[2021-08-27 10:00:37,771][CommThread][INFO] Started devices polling thread
+[2021-08-27 10:00:37,771][CommThread][INFO] Recieved message: 
+[2021-08-27 10:00:37,772][DeviceProcessorThread][INFO] Started message processor
+[2021-08-27 10:00:37,772][DeviceProcessorThread][INFO] {'test': 'message'}
+[2021-08-27 10:00:38,272][DeviceProcessorThread][INFO] {'test': 'message'}
+[2021-08-27 10:00:38,304][CommThread][INFO] Recieved message: 
+[2021-08-27 10:00:38,779][CommThread][INFO] Recieved message: 
+[2021-08-27 10:00:39,318][CommThread][INFO] Recieved message: 
+[2021-08-27 10:00:39,791][CommThread][INFO] Recieved message: 
+[2021-08-27 10:00:40,331][CommThread][INFO] Recieved message: 
+[2021-08-27 10:00:40,803][CommThread][INFO] Recieved message: 
+[2021-08-27 10:00:41,338][CommThread][INFO] Recieved message: 
+[2021-08-27 10:00:41,817][CommThread][INFO] Recieved message: 
+[2021-08-27 10:00:42,350][CommThread][INFO] Recieved message: 
+[2021-08-27 10:00:42,774][DeviceProcessorThread][INFO] {'test': 'message'}
+[2021-08-27 10:00:42,822][CommThread][INFO] Recieved message: 
+[2021-08-27 10:00:43,277][DeviceProcessorThread][INFO] {'test': 'message'}
+[2021-08-27 10:00:43,357][CommThread][INFO] Recieved message: 
+[2021-08-27 10:00:44,362][CommThread][INFO] Recieved message: 
+[2021-08-27 10:00:45,375][CommThread][INFO] Recieved message: 
+[2021-08-27 10:00:46,388][CommThread][INFO] Recieved message: 
+[2021-08-27 10:00:49,488][MainThread][INFO] Started version 0.1.0 at 2021-08-27 10:00:49.488795
+[2021-08-27 10:00:49,497][MainThread][INFO] Started devices thread
+[2021-08-27 10:00:49,498][CommThread][INFO] Started devices polling thread
+[2021-08-27 10:00:49,499][CommThread][INFO] Recieved message: 
+[2021-08-27 10:00:49,500][DeviceProcessorThread][INFO] Started message processor
+[2021-08-27 10:00:49,501][DeviceProcessorThread][INFO] {'test': 'message'}
+[2021-08-27 10:00:50,511][CommThread][INFO] Recieved message: 
+[2021-08-27 10:00:51,525][CommThread][INFO] Recieved message: 
+[2021-08-27 10:00:52,538][CommThread][INFO] Recieved message: 
+[2021-08-27 10:00:53,550][CommThread][INFO] Recieved message: 
+[2021-08-27 10:00:54,515][DeviceProcessorThread][INFO] {'test': 'message'}
+[2021-08-27 10:00:54,563][CommThread][INFO] Recieved message: 
+[2021-08-27 10:00:55,575][CommThread][INFO] Recieved message: 
+[2021-08-27 10:00:56,578][CommThread][INFO] Recieved message: 
+[2021-08-27 10:00:57,582][CommThread][INFO] Recieved message: 
+[2021-08-27 10:00:58,593][CommThread][INFO] Recieved message: 
+[2021-08-27 10:00:59,531][DeviceProcessorThread][INFO] {'test': 'message'}
+[2021-08-27 10:00:59,594][CommThread][INFO] Recieved message: 
+[2021-08-27 10:01:00,602][CommThread][INFO] Recieved message: 
+[2021-08-27 10:01:01,606][CommThread][INFO] Recieved message: 
+[2021-08-27 10:01:02,618][CommThread][INFO] Recieved message: 
+[2021-08-27 10:01:03,629][CommThread][INFO] Recieved message: 
+[2021-08-27 10:01:04,535][DeviceProcessorThread][INFO] {'test': 'message'}
+[2021-08-27 10:01:04,640][CommThread][INFO] Recieved message: 
+[2021-08-27 10:01:05,655][CommThread][INFO] Recieved message: 
+[2021-08-27 10:01:06,667][CommThread][INFO] Recieved message: 
+[2021-08-27 10:01:07,678][CommThread][INFO] Recieved message: 
+[2021-08-27 10:01:08,682][CommThread][INFO] Recieved message: 
+[2021-08-27 10:01:09,550][DeviceProcessorThread][INFO] {'test': 'message'}
+[2021-08-27 10:01:09,691][CommThread][INFO] Recieved message: 
+[2021-08-27 10:01:10,696][CommThread][INFO] Recieved message: 
+[2021-08-27 10:01:11,701][CommThread][INFO] Recieved message: 
+[2021-08-27 10:01:12,713][CommThread][INFO] Recieved message: 
+[2021-08-27 10:01:13,725][CommThread][INFO] Recieved message: 
+[2021-08-27 10:01:14,566][DeviceProcessorThread][INFO] {'test': 'message'}
+[2021-08-27 10:01:14,737][CommThread][INFO] Recieved message: 
+[2021-08-27 10:01:15,750][CommThread][INFO] Recieved message: 
+[2021-08-27 10:01:16,760][CommThread][INFO] Recieved message: 
+[2021-08-27 10:01:17,767][CommThread][INFO] Recieved message: 
+[2021-08-27 10:01:18,774][CommThread][INFO] Recieved message: 
+[2021-08-27 10:01:19,570][DeviceProcessorThread][INFO] {'test': 'message'}
+[2021-08-27 10:01:19,776][CommThread][INFO] Recieved message: 
+[2021-08-27 10:01:20,779][CommThread][INFO] Recieved message: 
+[2021-08-27 10:01:21,784][CommThread][INFO] Recieved message: 
+[2021-08-27 10:01:22,794][CommThread][INFO] Recieved message: 
+[2021-08-27 10:01:23,795][CommThread][INFO] Recieved message: 
+[2021-08-27 10:01:24,580][DeviceProcessorThread][INFO] {'test': 'message'}
+[2021-08-27 10:01:24,800][CommThread][INFO] Recieved message: 
+[2021-08-27 10:01:25,815][CommThread][INFO] Recieved message: 
+[2021-08-27 10:01:26,827][CommThread][INFO] Recieved message: 
+[2021-08-27 10:01:27,831][CommThread][INFO] Recieved message: 
+[2021-08-27 10:01:28,836][CommThread][INFO] Recieved message: 
+[2021-08-27 10:01:29,590][DeviceProcessorThread][INFO] {'test': 'message'}
+[2021-08-27 10:01:29,844][CommThread][INFO] Recieved message: 
+[2021-08-27 10:01:30,846][CommThread][INFO] Recieved message: 

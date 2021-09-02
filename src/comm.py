@@ -14,8 +14,6 @@ from pymodbus.exceptions import ModbusIOException
 from pymodbus.constants import Endian
 from pymodbus.payload import BinaryPayloadDecoder
 from pymodbus.payload import BinaryPayloadBuilder
-from fc_regs import REGS
-import regs
 
 # RS 485
 import serial

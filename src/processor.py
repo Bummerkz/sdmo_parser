@@ -42,7 +42,7 @@ class Processor:
         }
     }
 
-    def __init__(self, device_communicate_send_queue: Queue, device_communicate_recv_queue: Queue, http_request_queue: Queue, CFG):
+    def __init__(self, device_communicate_queue: Queue, http_request_queue: Queue, CFG):
         self._endpoints = {}
         self._cfg = CFG
         self._endpoints_by_id = {}
@@ -55,8 +55,7 @@ class Processor:
         self._logger = getLogger(LOGGER_NAME)
         # self._vegaRecvQueue = vega_recv_queue
         # self._vegaSendQueue = vega_send_queue
-        self._deviceCommunicateSendQueue = device_communicate_send_queue
-        self._deviceCommunicateRecvQueue = device_communicate_recv_queue
+        self._deviceCommunicateQueue = device_communicate_queue
 
         self._httpRequestQueue = http_request_queue
         self._stopEvent = Event()
@@ -93,8 +92,7 @@ class Processor:
             #     self.process_message(msg)
 
             try:
-                msg = self._deviceCommunicateRecvQueue.get_nowait()
-                # self._logger.info(msg)
+                msg = self._deviceCommunicateQueue.get_nowait()
             except Empty:
                 pass
             else:
@@ -108,7 +106,7 @@ class Processor:
                 self.process_http_req(req)
 
             if self._httpRequestQueue.empty():
-                sleep(1)
+                sleep(5)
 
     # def process_message(self, msg: message.AbstractMessage):
     #     self._logger.debug('Got a message: %s' % str(msg))

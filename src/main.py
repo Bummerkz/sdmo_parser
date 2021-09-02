@@ -16,9 +16,6 @@ from processor import Processor
 
 from time import sleep
 
-# For testing
-from comm_test_queue import DeviceCommunicate
-
 # DEV flag for PC debugging
 DEV = True
 
@@ -53,54 +50,16 @@ def prepare_logger():
 
     return logger
 
-
-# class startWork(TimerEvtHandle):
-#     def __init__(self, sec, cfg, last_mtime):  # Trigger timer after "sec" seconds
-#         self.base = init_base()
-#         self.cfg = cfg
-#         self.last_mtime = last_mtime
-#         TimerEvtHandle.__init__(self, self.base, sec)
-
-    # def timerHandle(self, evt, userdata):
-    #     t = os.path.getmtime(APP_PATH + MYAPP_NAME + "config.json")
-
-    #     current_mtime = t
-    #     if t > self.last_mtime: # если файл изменился обновляем конфиг
-    #         self.cfg = config.get_config()
-    #         # Создаем инстансы устроиств из файла конфигурации
-    #         for device in self.cfg["Devices"]:
-    #             # if self.cfg["Devices"][device]['name'].lower() == 'fc':
-    #             interval = int(self.cfg['Devices'][device]['send_interval'])
-    #             app = serial_device.InitTimer(interval, device)
-    #             t = threading.Thread(target=app.start)
-    #             t.daemon = True
-    #             t.start()
-    #             logging.info('{0} device created!'.format(self.cfg['Devices'][device]['type']))
-    #             time.sleep(10)
-
-    #     self.last_mtime = current_mtime
-
-    #     self.startTimer()
-
-
 def start_app():
 
     logger = prepare_logger()
     logger.info('Started version %s at %s' % (VERSION, datetime.now()))
 
-    # Запускаем сервер
-    # local_server = server
-    # server_thread = threading.Thread(target=local_server.StartServer)
-    # server_thread.start()
-
     http_server = HTTPServer(HTTP_SERVER_ADDR)
     http_server.start_serve()
 
-    deviceCommunicate = DeviceCommunicate()
-    deviceCommunicate._start_listen()
-
-    processor = Processor(deviceCommunicate.get_send_queue(), deviceCommunicate.get_recv_queue(), http_server.queue, CFG)
-    processor.start()
+    # processor = Processor(deviceCommunicate.get_queue(), http_server.queue, CFG)
+    # processor.start()
 
     while 1:
         try:
@@ -116,12 +75,6 @@ def start_app():
             exit(0)
 
     
-    last_mtime = None
-
-    # worker_thread = startWork(10, cfg, last_mtime)
-    # worker_thread = threading.Thread(target=worker_thread.start)
-    # worker_thread.start()
-
 def main(argv=sys.argv):
 
     start_app()
