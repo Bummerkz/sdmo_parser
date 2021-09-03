@@ -1,13 +1,9 @@
 #-*- coding:utf-8 -*-
-# from URMessageChannel import TimerEvtHandle, init_base, logconfig
-# import fc
-
-import sys
 import config
 
 # New version
 from datetime import datetime
-from logging import getLogger, Formatter, DEBUG
+from logging import getLogger, Formatter, DEBUG, basicConfig
 from logging.handlers import RotatingFileHandler
 
 from http_server import HTTPServer
@@ -33,8 +29,9 @@ VERSION = '0.1.0'
 
 LOG_PATH = APP_PATH + MYAPP_NAME + 'logs'
 LOGGER_NAME = 'main'
+FORMAT = '[%(asctime)s][%(threadName)s][%(levelname)s] %(message)s'
 
-HTTP_SERVER_ADDR = ('', 81)
+HTTP_SERVER_ADDR = ('', 8080)
 
 CFG = config.get_config(dev=True)
 
@@ -42,11 +39,13 @@ CFG = config.get_config(dev=True)
 def prepare_logger():
     logger = getLogger(LOGGER_NAME)
     logger.setLevel(DEBUG)
-    handler = RotatingFileHandler(LOG_PATH + '\\' + 'main.log', maxBytes=10485760,
-                                  backupCount=20)
-    formatter = Formatter(u'[%(asctime)s][%(threadName)s][%(levelname)s] %(message)s')
-    handler.setFormatter(formatter)
-    logger.addHandler(handler)
+
+    basicConfig(format=FORMAT)
+    # handler = RotatingFileHandler(LOG_PATH + '\\' + 'main.log', maxBytes=10485760,
+    #                               backupCount=20)
+    # formatter = Formatter(format)
+    # handler.setFormatter(formatter)
+    # logger.addHandler(handler)
 
     return logger
 
@@ -58,8 +57,8 @@ def start_app():
     http_server = HTTPServer(HTTP_SERVER_ADDR)
     http_server.start_serve()
 
-    # processor = Processor(deviceCommunicate.get_queue(), http_server.queue, CFG)
-    # processor.start()
+    processor = Processor(http_server.queue, CFG)
+    processor.start()
 
     while 1:
         try:
@@ -71,11 +70,10 @@ def start_app():
         except KeyboardInterrupt:
             processor.stop()
             http_server.server_close()
-            deviceCommunicate._stop_listen()
-            exit(0)
+            exit()
 
     
-def main(argv=sys.argv):
+def main():
 
     start_app()
 

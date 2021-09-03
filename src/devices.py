@@ -15,27 +15,27 @@ class AbstractDevice:
             raise NoSettingsException
 
 
-class MultiPacketDevice(AbstractDevice):
-    def process(self, data: bytes):
-        return self._parse(data, self.REGS)
+# class MultiPacketDevice(AbstractDevice):
+#     def process(self, data: bytes):
+#         return self._parse(data, self.REGS)
 
-    def process_settings(self, data: bytes):
-        return self._parse(data, self.SETTINGS)
+#     def process_settings(self, data: bytes):
+#         return self._parse(data, self.SETTINGS)
 
-    @staticmethod
-    def _parse(data: bytes, subject: list):
-        result = []
-        packet_number = data[0] >> 4
-        # packets_total = data[0] & 0xF
-        pos = 1
-        for reg in subject:
-            if reg.get('packet_number') in (None, packet_number):
-                register = reg['class']()
-                register.id = reg['id']
-                register.raw = data[pos:pos + reg['class'].LENGTH]
-                result.append(register)
-                pos += reg['class'].LENGTH
-        return result
+#     @staticmethod
+#     def _parse(data: bytes, subject: list):
+#         result = []
+#         packet_number = data[0] >> 4
+#         # packets_total = data[0] & 0xF
+#         pos = 1
+#         for reg in subject:
+#             if reg.get('packet_number') in (None, packet_number):
+#                 register = reg['class']()
+#                 register.id = reg['id']
+#                 register.raw = data[pos:pos + reg['class'].LENGTH]
+#                 result.append(register)
+#                 pos += reg['class'].LENGTH
+#         return result
 
 
 class SinglePacketDevice(AbstractDevice):
@@ -51,7 +51,7 @@ class SinglePacketDevice(AbstractDevice):
         return result
 
 
-class DanfossDevice(MultiPacketDevice):
+class DanfossDevice(SinglePacketDevice):
     DEVICE_ID = 0xF4
     API_ID = 1
 
@@ -272,7 +272,7 @@ class DanfossDevice(MultiPacketDevice):
     ]
 
     def get_register(self, reg_id, reg_value=None):
-        for reg in self.SETTINGS:
+        for reg in self.REGS:
             if reg['id'] == reg_id:
                 register = reg['class']()
                 register.id = reg_id

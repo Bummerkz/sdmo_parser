@@ -457,3 +457,13 @@
 [2021-09-02 14:09:54,528][CommThread][INFO] Started devices polling thread
 [2021-09-02 14:09:54,528][MainThread][INFO] Started devices thread
 [2021-09-02 14:09:54,529][DeviceProcessorThread][INFO] Started message processor
+[2021-09-03 09:17:15,349][MainThread][INFO] Started version 0.1.0 at 2021-09-03 09:17:15.349474
+[2021-09-03 09:17:15,359][DeviceProcessorThread][INFO] Started message processor
+[2021-09-03 09:18:02,989][MainThread][INFO] Started version 0.1.0 at 2021-09-03 09:18:02.989121
+[2021-09-03 09:18:02,995][DeviceProcessorThread][INFO] Started message processor
+[2021-09-03 09:22:18,225][MainThread][INFO] Started version 0.1.0 at 2021-09-03 09:22:18.225581
+[2021-09-03 09:22:18,233][DeviceProcessorThread][INFO] Started message processor
+[2021-09-03 09:23:28,568][MainThread][INFO] Started version 0.1.0 at 2021-09-03 09:23:28.568365
+[2021-09-03 09:23:28,574][DeviceProcessorThread][INFO] Started message processor
+[2021-09-03 09:24:15,077][MainThread][INFO] Started version 0.1.0 at 2021-09-03 09:24:15.077283
+[2021-09-03 09:24:24,285][MainThread][INFO] Started version 0.1.0 at 2021-09-03 09:24:24.285148
