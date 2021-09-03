@@ -43,8 +43,7 @@ class Processor:
         self._cfg = CFG
         self._endpoints_by_id = {}
         for dev_name in self.ENDPOINTS.keys():
-            self._endpoints[dev_name] = Double485Endpoint(dev_name,
-                                                         self.ENDPOINTS[dev_name]['n'])
+            self._endpoints[dev_name] = Double485Endpoint()
             self._endpoints_by_id[self.ENDPOINTS[dev_name]['n']] = self._endpoints[
                 dev_name]
         self._logger = getLogger(LOGGER_NAME)
@@ -55,6 +54,7 @@ class Processor:
 
     def start(self):
         if self._thread is None:
+            
             self._thread = Thread(name='DeviceProcessorThread', target=self.message_processor)
             self._thread.start()
 
@@ -141,10 +141,6 @@ class Processor:
         if len(regs) != len(values):
             self._logger.warning('Got wrong setReg request (length of v and r not equal)')
             return
-        # if len(regs) > 8:
-        #     self._logger.warning('Got more than 8 regs. Sending only first 8.')
-        #     regs = regs[0:8]
-        #     values = values[0:8]
         
         try:
             dev_id = int(req.params['n'])
@@ -178,18 +174,23 @@ class Processor:
         if endpoint is None:
             self._logger.warning('Unknown device id %s' % dev_id)
             return
-        regs = req.params.get('r').split(',')
+        if req.params.get('r') is not None:
+            regs = req.params.get('r').split(',')
+            print (regs)
+        else:
+            self._logger.debug('Got command to read all regs')
+
         # if len(regs) > 8:
         #     self._logger.warning('Got more than 8 regs. Sending only first 8.')
         #     regs = regs[0:8]
-        packet, port = endpoint.read_primary_settings(regs)
+        # packet, port = endpoint.read_primary_settings(regs)
         # msg = message.DeviceSendMessage()
         # msg.devEui = endpoint.devEui
         # msg.data = packet
         # msg.port = port
-        self._logger.debug('Sending message to %s' % endpoint.devEui)
-        print(packet)
-        print(port)
+        # self._logger.debug('Sending message to %s' % endpoint.devEui)
+        # print(packet.hex('-'))
+        # print(port)
         # self._vegaSendQueue.put(msg)
     
     def set_device(self):
